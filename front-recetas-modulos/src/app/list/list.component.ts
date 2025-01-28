@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RecipesService } from '../service/recipes.service';
 
 @Component({
   selector: 'app-list',
@@ -8,5 +9,17 @@ import { Component } from '@angular/core';
   styleUrl: './list.component.css'
 })
 export class ListComponent {
+
+  constructor(
+    private recipes: RecipesService
+  ){}
+
+  listar() {
+    this.recipes.getAllRecipes()?.subscribe(
+      response => {
+        console.log('Esta es la lista de recetas', response);
+      }
+    )
+  }
 
 }

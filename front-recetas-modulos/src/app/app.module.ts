@@ -10,6 +10,9 @@ import { ListComponent } from './list/list.component';
 import { RecetaComponent } from './receta/receta.component';
 import { DetalleRecetaComponent } from './detalle-receta/detalle-receta.component';
 import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
+import { PruebaComponent } from './prueba/prueba.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,11 +23,14 @@ import { LoginComponent } from './login/login.component';
     ListComponent,
     RecetaComponent,
     DetalleRecetaComponent,
-    LoginComponent
+    LoginComponent,
+    PruebaComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
