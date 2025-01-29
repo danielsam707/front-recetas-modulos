@@ -1,15 +1,20 @@
-<div class="flex space-x-4  my-5 mx-5">
+<div class="flex space-x-4 my-5 mx-5">
+    <!-- Sección de Categorías -->
     <div class="w-80">
         <h2>CATEGORIAS</h2>
-        <button class="bg-red-500" (click)="listar()"> lista</button>
+        <div *ngFor="let categoria of listaCategorias">
+            <ul>
+                <li  (click)="filtrarPorCategoria(categoria.id)">
+                    {{ categoria.attributes.name }}
+                </li> <!-- Mostramos el nombre de la categoría -->
+            </ul>
+        </div>
     </div>
+
+    <!-- Sección de Recetas -->
     <div class="grid grid-cols-4 gap-8 w-full">
-        <app-receta/>
-        <app-receta/>
-        <app-receta/>
-        <app-receta/>
-        <app-receta/>
-        <app-receta/>
-        <app-receta/>
+        <div *ngFor="let receta of listaRecetas" class="w-full border p-4">
+            <app-receta [receta]="receta"></app-receta> <!-- Componente hijo que muestra la receta -->
+        </div>
     </div>
 </div>

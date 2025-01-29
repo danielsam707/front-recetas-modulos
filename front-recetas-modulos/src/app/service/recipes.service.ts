@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Receta } from '../models/receta.model';
+import { Category, CategoryData, Recipe, RecipeData } from '../models/recipeData.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,16 +14,16 @@ export class RecipesService {
   ) { }
 
   getAllRecipes() {
-    const token = localStorage.getItem('token');
+    
+    return this.http.get<RecipeData>(`${this.apiUrl}/api/v1/recipes`);
+  }
 
-    if(!token) {
-      console.log('No se encontro el token');
-      return
-    }
+  getAllCategory() {
+    
+    return this.http.get<CategoryData>(`${this.apiUrl}/api/v1/categories`);
+  }
 
-    const headers = {
-      Authorization: `Bearer ${token}`,
-    }
-    return this.http.get<Receta>(`${this.apiUrl}/api/v1/recipes`, {headers});
+  getRecipesByCategory(id: number) {
+    return this.http.get<Category>(`${this.apiUrl}/api/v1/categories/${id}`);
   }
 }

@@ -12,7 +12,8 @@ import { DetalleRecetaComponent } from './detalle-receta/detalle-receta.componen
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { PruebaComponent } from './prueba/prueba.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule, HttpInterceptor} from '@angular/common/http';
+import { TokenInterceptor } from './interceptor/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,13 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,  // Usamos la función interceptor
+      multi: true  // Permite que haya múltiples interceptores
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
