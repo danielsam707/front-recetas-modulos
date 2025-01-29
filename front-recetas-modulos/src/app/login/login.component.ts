@@ -27,15 +27,13 @@ export class LoginComponent {
   onSubmit() {
     
     this.authServirce.login(this.email, this.password, this.device_name).subscribe(
-      response => {
+      () => {
         this.router.navigate(['']);
       },
       error => {
         console.error('Error de autenticacion', error);
       }
     )
-
-      
   }
 
 }

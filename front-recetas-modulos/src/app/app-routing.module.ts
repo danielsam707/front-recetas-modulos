@@ -4,6 +4,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { ListComponent } from './list/list.component';
 import { LoginComponent } from './login/login.component';
 import { PruebaComponent } from './prueba/prueba.component';
+import { DetalleRecetaComponent } from './detalle-receta/detalle-receta.component';
 
 const routes: Routes = [
   {
@@ -18,14 +19,15 @@ const routes: Routes = [
         path: 'login',
         component: LoginComponent
       },
+      {
+        path: 'detalle-receta/:id',
+        component: DetalleRecetaComponent
+      },
       
     ]
     
   }, 
-  {
-    path: 'pru',
-    component: PruebaComponent
-  }
+  
 ];
 
 @NgModule({

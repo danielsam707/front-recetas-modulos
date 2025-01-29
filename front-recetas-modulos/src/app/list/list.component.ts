@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { RecipesService } from '../service/recipes.service';
 import { Category, Recipe, CategoryRelationships } from '../models/recipeData.model';
+import { AuthService } from '../service/auth.service';
+import { Usuario } from '../models/usuario.model';
 
 @Component({
   selector: 'app-list',
@@ -11,20 +13,23 @@ import { Category, Recipe, CategoryRelationships } from '../models/recipeData.mo
 })
 export class ListComponent {
 
-  // categoria: string = '';
+  user!: Usuario;
 
   listaRecetas: Recipe[] = [];
   listaCategorias: Category[] = [];
   
 
   constructor(
-    private recipeService: RecipesService
+    private recipeService: RecipesService,
+    private authService: AuthService,
+
   ){}
 
 
   ngOnInit() {
     this.listarRecetas()
     this.listarCategorias()
+    this.datosUsuario()
   }
   listarRecetas() {
     this.recipeService.getAllRecipes()?.subscribe(
@@ -45,8 +50,6 @@ export class ListComponent {
   }
 
   filtrarPorCategoria(categoriaId: number) {
-    // Filtramos la categoría para obtener las recetas de esa categoría
-    // const categoriaSeleccionada = this.listaCategorias.find(categoria => categoria.id === categoriaId);
     this.recipeService.getRecipesByCategory(categoriaId)
     .subscribe(
       response => {
@@ -56,12 +59,21 @@ export class ListComponent {
         this.listaRecetas = response.data.relationships.recipes;
       }
     )
-
-
-        // Accedemos a las recetas de esa categoría
-    
-
     console.log('Recetas de la categoría seleccionada:', this.listaRecetas);
   }
+
+  filtarPorUsuario() {
+    let name = this.user.name.toString();
+
+    this.listaRecetas = this.listaRecetas.filter(recipe => recipe.attributes.author === name);
+  }
+  
+
+  datosUsuario() {
+    this.authService.user$.subscribe(user => {
+      this.user = user;
+    });
+  }
+  
 
 }

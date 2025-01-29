@@ -26,4 +26,8 @@ export class RecipesService {
   getRecipesByCategory(id: number) {
     return this.http.get<any>(`${this.apiUrl}/api/v1/categories/${id}`);
   }
+
+  getRecipeById(id: string) {
+    return this.http.get<any>(`${this.apiUrl}/api/v1/recipes/${id}`)
+  }
 }
