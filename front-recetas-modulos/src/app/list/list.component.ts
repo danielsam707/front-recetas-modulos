@@ -51,9 +51,9 @@ export class ListComponent {
     .subscribe(
       response => {
         console.log('respuesta' ,response)
-        const lista = response.relationships;
+        const lista = response.data.relationships.recipes;
         console.log('recetas de categoria', lista)
-        //this.listaRecetas = response.relationships.recipes;
+        this.listaRecetas = response.data.relationships.recipes;
       }
     )
 
