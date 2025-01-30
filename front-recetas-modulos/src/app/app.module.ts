@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { PruebaComponent } from './prueba/prueba.component';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule, HttpInterceptor} from '@angular/common/http';
 import { TokenInterceptor } from './interceptor/token.interceptor';
+import { FomularioComponent } from './fomulario/fomulario.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { TokenInterceptor } from './interceptor/token.interceptor';
     RecetaComponent,
     DetalleRecetaComponent,
     LoginComponent,
-    PruebaComponent
+    PruebaComponent,
+    FomularioComponent
   ],
   imports: [
     BrowserModule,

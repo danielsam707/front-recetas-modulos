@@ -5,6 +5,7 @@ import { ListComponent } from './list/list.component';
 import { LoginComponent } from './login/login.component';
 import { PruebaComponent } from './prueba/prueba.component';
 import { DetalleRecetaComponent } from './detalle-receta/detalle-receta.component';
+import { FomularioComponent } from './fomulario/fomulario.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
       {
         path: 'detalle-receta/:id',
         component: DetalleRecetaComponent
+      },
+      {
+        path: 'formulario',
+        component: FomularioComponent
       },
       
     ]

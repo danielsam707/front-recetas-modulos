@@ -16,6 +16,7 @@ export class ListComponent {
   user!: Usuario;
 
   listaRecetas: Recipe[] = [];
+  listaBoton: Recipe[] = [];
   listaCategorias: Category[] = [];
   
 
@@ -36,6 +37,7 @@ export class ListComponent {
       response => {
         console.log('Esta es la lista de recetas', response);
         this.listaRecetas = response.data;
+        this.listaBoton = response.data;
       }
     )
   }
@@ -75,5 +77,9 @@ export class ListComponent {
     });
   }
   
+  listarTodas() {
+    this.listaRecetas = this.listaBoton;
+  }
+ 
 
 }
