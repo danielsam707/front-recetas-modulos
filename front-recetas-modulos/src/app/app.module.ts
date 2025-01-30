@@ -15,6 +15,10 @@ import { PruebaComponent } from './prueba/prueba.component';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule, HttpInterceptor} from '@angular/common/http';
 import { TokenInterceptor } from './interceptor/token.interceptor';
 import { FomularioComponent } from './fomulario/fomulario.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { ReactiveFormsModule } from '@angular/forms';
+
+
 
 @NgModule({
   declarations: [
@@ -33,14 +37,18 @@ import { FomularioComponent } from './fomulario/fomulario.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
+
+
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,  // Usamos la función interceptor
       multi: true  // Permite que haya múltiples interceptores
-    }
+    },
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })

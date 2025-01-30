@@ -19,7 +19,9 @@ export interface RecipeAttributes {
     tags: string;
 }
 
-
+export interface RecipeAPost extends Omit<RecipeAttributes, 'tags'> {
+    tags: string[];  // Ahora `tags` es un array de cadenas
+}
 
 
 export interface CategoryData {
@@ -42,3 +44,12 @@ export interface CategoryAttributes {
     name: string;
 }
 
+export interface Tag {
+    id: number;
+    type: string;
+    attributes: TagAttributes;
+}
+
+export interface TagAttributes {
+    name: string;
+}
