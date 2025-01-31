@@ -18,7 +18,7 @@ export class ListComponent {
   listaRecetas: Recipe[] = [];
   listaBoton: Recipe[] = [];
   listaCategorias: Category[] = [];
-  
+  recetasUsuario: Recipe[] = [];
 
   constructor(
     private recipeService: RecipesService,
@@ -31,13 +31,20 @@ export class ListComponent {
     this.listarRecetas()
     this.listarCategorias()
     this.datosUsuario()
+    
   }
+
+  
   listarRecetas() {
     this.recipeService.getAllRecipes()?.subscribe(
       response => {
         console.log('Esta es la lista de recetas', response);
         this.listaRecetas = response.data;
         this.listaBoton = response.data;
+
+        if (this.user && this.user.name) {
+          this.filtarPorUsuario();  // Filtrar las recetas de este usuario
+        }
       }
     )
   }
@@ -67,7 +74,11 @@ export class ListComponent {
   filtarPorUsuario() {
     let name = this.user.name.toString();
 
-    this.listaRecetas = this.listaRecetas.filter(recipe => recipe.attributes.author === name);
+    this.recetasUsuario = this.listaRecetas.filter(recipe => recipe.attributes.author === name);
+    this.listaRecetas = this.recetasUsuario;
+    this.recipeService.setRecetasUsuario(this.recetasUsuario);
+    console.log('Esta es la lista del usuario',this.recetasUsuario);
+    
   }
   
 

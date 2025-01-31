@@ -1,7 +1,7 @@
 <div class="max-w-4xl mx-auto p-6">
   <!-- Encabezado de la receta -->
   <div class="text-center mb-8">
-    <h1>{{recetaId}}</h1> <!-- Muestra el ID de la receta -->
+    <h1>{{ recetaId }}</h1> <!-- Muestra el ID de la receta -->
     <h1 class="text-3xl font-semibold text-gray-800 mb-2">{{ receta?.title }}</h1>
     <p class="text-lg text-gray-600 mb-4">Por: {{ receta?.author }}</p>
     <p class="text-sm text-gray-500">Categoría: {{ receta?.category }} | Etiquetas: {{ receta?.tags }}</p>
@@ -28,6 +28,16 @@
   <div class="mb-8">
     <h2 class="text-2xl font-semibold text-gray-700 mb-4">Instrucciones</h2>
     <p class="text-gray-600">{{ receta?.instructions }}</p>
+  </div>
+
+  <!-- Botones de editar y eliminar (solo si la receta es del usuario) -->
+  <div *ngIf="isRecetaDelUsuario" class="text-center mt-6 space-x-4">
+    <button (click)="editarReceta()" class="text-white bg-yellow-500 px-6 py-3 rounded-lg shadow-lg hover:bg-yellow-600">
+      Editar Receta
+    </button>
+    <button (click)="eliminarReceta()" class="text-white bg-red-500 px-6 py-3 rounded-lg shadow-lg hover:bg-red-600">
+      Eliminar Receta
+    </button>
   </div>
 
   <!-- Botón para volver a la lista de recetas -->
