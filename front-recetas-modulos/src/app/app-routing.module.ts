@@ -28,7 +28,10 @@ const routes: Routes = [
         path: 'formulario',
         component: FomularioComponent
       },
-      
+      {
+        path: 'formulario/:id',
+        component: FomularioComponent
+      },
     ]
     
   }, 

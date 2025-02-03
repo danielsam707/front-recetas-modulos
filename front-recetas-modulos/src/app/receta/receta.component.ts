@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Recipe } from '../models/recipeData.model';
+import { Recipe, RecipeAttributes } from '../models/recipeData.model';
+import { RecipesService } from '../service/recipes.service';
 
 @Component({
   selector: 'app-receta',
@@ -11,5 +12,12 @@ import { Recipe } from '../models/recipeData.model';
 export class RecetaComponent {
 
   @Input() receta!: Recipe;
+
+  constructor(
+    private recipeService: RecipesService,
+  ) {}
+
+
+  
 
 }

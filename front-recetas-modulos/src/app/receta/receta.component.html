@@ -7,7 +7,7 @@
         <h3 class="text-lg text-gray-700"><strong>{{receta.attributes.title}}</strong></h3>
         <p class="text-sm font-medium text-gray-500"><strong>Autor:</strong>{{ receta.attributes.author }}</p>
         <p class="text-sm font-medium text-gray-500"><strong>Etiquetas:</strong>{{ receta.attributes.tags }}</p>
-        <button class="text-black bg-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 w-full"
+        <button  class="text-black bg-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 w-full"
             ><a [routerLink]="['/detalle-receta', receta.id]">ver receta</a></button>
     </div>
 </div>

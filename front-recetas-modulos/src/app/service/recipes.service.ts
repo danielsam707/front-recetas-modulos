@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Category, CategoryData, Recipe, RecipeData } from '../models/recipeData.model';
+import { Category, CategoryData, Recipe, RecipeAttributes, RecipeData } from '../models/recipeData.model';
 import { RecipeAPost } from '../models/recipeData.model';
 import { BehaviorSubject } from 'rxjs';
 
@@ -15,9 +15,23 @@ export class RecipesService {
   private recetasUsuarioSource = new BehaviorSubject<Recipe[]>([]);
   recetasUsuario$ = this.recetasUsuarioSource.asObservable();
 
+  private recetaSubjet= new BehaviorSubject<Recipe | null>(null);
+  receta$ = this.recetaSubjet.asObservable();
+
+
+
   constructor(
     private http: HttpClient,
   ) { }
+
+  setRecipe(receta: Recipe) {
+    console.log('Receta a establecer:', receta); 
+    this.recetaSubjet.next(receta);
+  }
+
+  getRecipe(): Recipe | null {
+    return this.recetaSubjet.getValue();
+  }
 
   getAllRecipes() {
     
@@ -47,6 +61,12 @@ export class RecipesService {
 
   createRecipe(formData: FormData) {
     return this.http.post(`${this.apiUrl}/api/v1/recipes`, formData);
+  }
+
+  deleteRecipe(id: string) {
+    console.log('id en servicio', id)
+    return this.http.delete<any>(`${this.apiUrl}/api/v1/recipes/${id}`);
+    console.log('Receta eliminada')
   }
 
   getTags() {

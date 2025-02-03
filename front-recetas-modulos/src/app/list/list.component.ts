@@ -3,6 +3,7 @@ import { RecipesService } from '../service/recipes.service';
 import { Category, Recipe, CategoryRelationships } from '../models/recipeData.model';
 import { AuthService } from '../service/auth.service';
 import { Usuario } from '../models/usuario.model';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -91,6 +92,5 @@ export class ListComponent {
   listarTodas() {
     this.listaRecetas = this.listaBoton;
   }
- 
 
 }

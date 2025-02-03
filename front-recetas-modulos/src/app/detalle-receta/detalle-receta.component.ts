@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { RecipesService } from '../service/recipes.service';
 import { Recipe, RecipeAttributes } from '../models/recipeData.model';
 import { Observable } from 'rxjs';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-detalle-receta',
@@ -13,25 +14,26 @@ import { Observable } from 'rxjs';
 })
 export class DetalleRecetaComponent {
 
-  recetaId!: string;
+  recetaId!: string;  
   receta!: RecipeAttributes;
   recetasUsuario$: Observable<Recipe[]>; // Observable para obtener las recetas del usuario
+
   isRecetaDelUsuario: boolean = false; // Bandera para saber si es la receta del usuario
 
   constructor(
     private route: ActivatedRoute,
     private recipeService: RecipesService,
-  ) { this.recetasUsuario$ = this.recipeService.recetasUsuario$;}
+  ) { this.recetasUsuario$ = this.recipeService.recetasUsuario$;
+  }
 
   ngOnInit(): void {
     // Obtener el parámetro 'id' de la URL
     this.recetaId = this.route.snapshot.paramMap.get('id')!;
     console.log('Receta ID:', this.recetaId);
     this.obtenerReceta(this.recetaId)
-    console.log(this.recetasUsuario$);
     
-
   }
+
 
   
   obtenerReceta(id: string){
@@ -40,10 +42,11 @@ export class DetalleRecetaComponent {
       response => {
         
         this.receta = response.data.attributes;
-        console.log(this.receta);
+        console.log('Esta es la receta completa',this.receta);
 
         // Comparar el id de la receta con las recetas del usuario
         this.recetasUsuario$.subscribe(recetas => {
+          console.log('estas son las recetas del servicio', recetas)
         this.isRecetaDelUsuario = recetas.some(recipe => recipe.id.toString() === id); // Verifica si el id coincide
         });
 
@@ -58,7 +61,14 @@ export class DetalleRecetaComponent {
   }
 
   eliminarReceta() {
-    console.log('Eliminar receta con ID:', this.recetaId);
-    // Implementar la lógica de eliminación
+    console.log('id en componente', this.recetaId)
+    console.log(this.recetaId)
+    this.recipeService.deleteRecipe(this.recetaId).subscribe(
+      response => {
+        console.log('Receta eliminada con éxito:', response);
+      
+    })
   }
+  
+  
 }

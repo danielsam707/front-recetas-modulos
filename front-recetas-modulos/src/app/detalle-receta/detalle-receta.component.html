@@ -32,11 +32,11 @@
 
   <!-- Botones de editar y eliminar (solo si la receta es del usuario) -->
   <div *ngIf="isRecetaDelUsuario" class="text-center mt-6 space-x-4">
-    <button (click)="editarReceta()" class="text-white bg-yellow-500 px-6 py-3 rounded-lg shadow-lg hover:bg-yellow-600">
-      Editar Receta
+    <button  (click)="editarReceta()" routerLink="/formulario" class="text-white bg-yellow-500 px-6 py-3 rounded-lg shadow-lg hover:bg-yellow-600">
+      <a [routerLink]="['/formulario', recetaId]">Editar receta</a>
     </button>
     <button (click)="eliminarReceta()" class="text-white bg-red-500 px-6 py-3 rounded-lg shadow-lg hover:bg-red-600">
-      Eliminar Receta
+      Eliminar receta
     </button>
   </div>
 

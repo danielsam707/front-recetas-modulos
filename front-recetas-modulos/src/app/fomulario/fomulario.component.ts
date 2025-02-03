@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { RecipesService } from '../service/recipes.service';
-import { Category, Tag } from '../models/recipeData.model';
+import { Category, Recipe, Tag } from '../models/recipeData.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'; 
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 
 
@@ -15,18 +16,23 @@ import { Router } from '@angular/router';
 })
 export class FomularioComponent {
 
-
   listaCategorias: Category[] = [];
   tags: Tag[] = [];
   recetaForm: FormGroup;
+  isEditing: boolean = false; // Para saber si estamos editando
+  receta!: Recipe;
+  recetaId: string | null = null; // Para almacenar el id de la receta
 
 
   constructor(
     private recipeService: RecipesService,
     private fb: FormBuilder,
     private router: Router,
+    private route: ActivatedRoute,
+
 
   ) {
+
     // Inicializamos el FormGroup aquí
     this.recetaForm = this.fb.group({
       title: ['', Validators.required],
@@ -41,9 +47,19 @@ export class FomularioComponent {
   ngOnInit(): void {
     this.obtenerTags();
     this.obtenerCategorias()
+
+    this.recetaId = this.route.snapshot.paramMap.get('id'); // Obtener el ID desde la ruta
+
+    if (this.recetaId) {
+      this.isEditing = true;
+      this.obtenerReceta(this.recetaId); // Si hay ID, es modo edición, obtenemos los datos
+    }
     
   }
 
+  obtenerReceta(id: string) {
+
+  }
   obtenerTags() {
     this.recipeService.getTags().subscribe((response) => {
       //console.log('Esta es la lista de tags', response);
@@ -103,11 +119,14 @@ export class FomularioComponent {
     } else {
       console.log('Formulario no válido');
     }
+    
+    this.router.navigate(['']);
   }
   
 
   capture(e: any) {
     console.log(e)
+
   }
 
 
