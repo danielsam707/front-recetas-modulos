@@ -35,14 +35,25 @@
             <!-- Categoría -->
             <div class="w-1/2">
                 <label for="category" class="block text-gray-700 text-sm font-medium mb-2">Categoría</label>
-                <select id="category" formControlName="category_id"
+                <select id="category" formControlName="category"
                     class="block w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                    <option value="" disabled selected>Selecciona una categoría</option>
+
+                    <!-- Modo Creación: Opción de seleccionar categoría -->
+                    <option *ngIf="!isEditing" value="" disabled selected>Selecciona una categoría</option>
+
+                    <!-- Modo Edición: Mostrar la categoría actual como texto (no seleccionable) -->
+                    <option *ngIf="isEditing" [value]="categoryId" >
+                        {{ receta.attributes.category }}
+                    </option>
+
+                    <!-- Mostrar todas las categorías disponibles -->
                     <option *ngFor="let category of listaCategorias" [value]="category.id">
-                        {{ category.attributes.name }}
+                        {{ category.attributes?.name }}
                     </option>
                 </select>
             </div>
+
+
 
             <!-- Etiquetas -->
             <div class="w-1/2">
@@ -60,14 +71,13 @@
         <!-- Imagen -->
         <div class="mb-4">
             <label for="image" class="block text-gray-700 text-sm font-medium mb-2">Imagen (opcional)</label>
-            <input (change)="capture($event)" id="image" formControlName="image" type="file" accept="image/*"  #fileInput
+            <input (change)="capture($event)" id="image" formControlName="image" type="file" accept="image/*" #fileInput
                 class="block w-full text-sm text-gray-500 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
         </div>
 
         <!-- Botón de Enviar -->
         <div class="text-center">
             <button type="submit"
-                
                 class="text-white bg-blue-600 px-6 py-3 rounded-lg shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500">
                 Crear Receta
             </button>

@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { RecipesService } from '../service/recipes.service';
 import { Recipe, RecipeAttributes } from '../models/recipeData.model';
 import { Observable } from 'rxjs';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterLink, RouterLinkActive, Router } from '@angular/router';
 
 @Component({
   selector: 'app-detalle-receta',
@@ -19,12 +19,17 @@ export class DetalleRecetaComponent {
   recetasUsuario$: Observable<Recipe[]>; // Observable para obtener las recetas del usuario
 
   isRecetaDelUsuario: boolean = false; // Bandera para saber si es la receta del usuario
+  
+//----------------------------------------------------------------------------------------------------------------
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private recipeService: RecipesService,
   ) { this.recetasUsuario$ = this.recipeService.recetasUsuario$;
   }
+
+//----------------------------------------------------------------------------------------------------------------
 
   ngOnInit(): void {
     // Obtener el parámetro 'id' de la URL
@@ -35,7 +40,8 @@ export class DetalleRecetaComponent {
   }
 
 
-  
+//----------------------------------------------------------------------------------------------------------------
+
   obtenerReceta(id: string){
     this.recipeService.getRecipeById(id)
     .subscribe(
@@ -54,12 +60,17 @@ export class DetalleRecetaComponent {
     )
   }
 
+
+//----------------------------------------------------------------------------------------------------------------
+
   // Aquí puedes agregar las funciones para editar y eliminar la receta, por ejemplo:
   editarReceta() {
     console.log('Editar receta con ID:', this.recetaId);
     // Implementar la lógica de edición
   }
 
+
+//----------------------------------------------------------------------------------------------------------------
   eliminarReceta() {
     console.log('id en componente', this.recetaId)
     console.log(this.recetaId)
@@ -68,6 +79,7 @@ export class DetalleRecetaComponent {
         console.log('Receta eliminada con éxito:', response);
       
     })
+    this.router.navigate(['']);
   }
   
   

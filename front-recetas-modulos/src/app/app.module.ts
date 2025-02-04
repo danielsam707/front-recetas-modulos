@@ -17,6 +17,11 @@ import { TokenInterceptor } from './interceptor/token.interceptor';
 import { FomularioComponent } from './fomulario/fomulario.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormularioEdiccionComponent } from './formulario-ediccion/formulario-ediccion.component';
+import { ListaDosComponent } from './component/lista-dos/lista-dos.component';
+import { RecetaDosComponent } from './component/receta-dos/receta-dos.component';
+import { DetalleDosComponent } from './component/detalle-dos/detalle-dos.component';
+import { TarjetaRecetaComponent } from './component/tarjeta-receta/tarjeta-receta.component';
 
 
 
@@ -31,7 +36,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     DetalleRecetaComponent,
     LoginComponent,
     PruebaComponent,
-    FomularioComponent
+    FomularioComponent,
+    FormularioEdiccionComponent,
+    ListaDosComponent,
+    RecetaDosComponent,
+    DetalleDosComponent,
+    TarjetaRecetaComponent
   ],
   imports: [
     BrowserModule,

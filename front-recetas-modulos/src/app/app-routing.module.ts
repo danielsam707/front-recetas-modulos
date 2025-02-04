@@ -6,6 +6,8 @@ import { LoginComponent } from './login/login.component';
 import { PruebaComponent } from './prueba/prueba.component';
 import { DetalleRecetaComponent } from './detalle-receta/detalle-receta.component';
 import { FomularioComponent } from './fomulario/fomulario.component';
+import { RecetaDosComponent } from './component/receta-dos/receta-dos.component';
+import { ListaDosComponent } from './component/lista-dos/lista-dos.component';
 
 const routes: Routes = [
   {
@@ -32,6 +34,16 @@ const routes: Routes = [
         path: 'formulario/:id',
         component: FomularioComponent
       },
+      {
+        path: 'receta-api',
+        component: RecetaDosComponent
+      },
+      {
+        path: 'lista-api',
+        component: ListaDosComponent
+      },
+
+    
     ]
     
   }, 
