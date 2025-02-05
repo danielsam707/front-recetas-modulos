@@ -35,7 +35,7 @@ const routes: Routes = [
         component: FomularioComponent
       },
       {
-        path: 'receta-api',
+        path: 'receta-api/:id',
         component: RecetaDosComponent
       },
       {

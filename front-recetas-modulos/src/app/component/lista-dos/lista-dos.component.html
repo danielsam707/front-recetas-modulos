@@ -1,41 +1,49 @@
 <div class="flex space-x-4 my-5 mx-5">
   <!-- Sección de Categorías -->
   <div class="w-80">
-      <!-- Título de Categorías -->
-      <h2 class="text-2xl font-semibold text-gray-900 mb-4">CATEGORÍAS</h2>
+    <!-- Título de Categorías -->
+    <h2 class="text-2xl font-semibold text-gray-900 mb-4">Categorías</h2>
 
-      <!-- Solo un ul para todas las categorías -->
-      <ul
-          class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-          <li *ngFor="let categoria of listaCategorias" (click)="obtenerCategorias()" class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600 cursor-pointer  hover:bg-gray-200 dark:hover:bg-gray-600 hover:text-black dark:hover:text-white">
-              {{ categoria.strCategory }}
-          </li>
-      </ul><br><br>
+    <!-- Solo un ul para todas las categorías -->
+    <ul
+      class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+      <li *ngFor="let categoria of listaCategorias" (click)="recetasPorCategorias(categoria.strCategory)"
+        class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600 cursor-pointer  hover:bg-gray-200 dark:hover:bg-gray-600 hover:text-black dark:hover:text-white">
+        {{ categoria.strCategory }}
+      </li>
+    </ul><br><br>
 
 
-      <!-- Botón "Mis Recetas" -->
-      <!-- <button (click)="filtarPorUsuario()" type="button"
+    <h2 class="text-2xl font-semibold text-gray-900 mb-4">Receta aleatoria</h2>
+
+    <!-- Botón "Mis Recetas" -->
+    <button (click)="obtenerRecetaAleatoria()" type="button"
           class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
-          Mis recetas
-      </button><br>
+          Generar receta aleatoria
+    </button><br><br><br>
 
-      <button (click)="listarTodas()" type="button"
-          class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
-          Todas las recetas
-      </button><br><br>
+    <!-- Título de Area -->
+    <h2 class="text-2xl font-semibold text-gray-900 mb-4">Recetas por areas</h2>
+    <ul
+      class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+      <li *ngFor="let area of listaAreas" (click)="recetasPorArea(area.strArea)"
+        class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600 cursor-pointer  hover:bg-gray-200 dark:hover:bg-gray-600 hover:text-black dark:hover:text-white">
+        {{ area.strArea }}
+      </li>
+    </ul><br><br>
 
-      <a
-          routerLink="/formulario"
-          class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"> 
-          Crear receta
-      </a> -->
+
+    
   </div>
 
-   <!-- Sección de Recetas -->
-   <div class="grid grid-cols-4 gap-8 w-full">
-    <div *ngFor="let receta of listaRecetas" class="w-full border p-4">
+  <!-- Sección de Recetas -->
+  <div>
+    <h1 class="text-3xl font-semibold text-gray-900 mb-6 text-center w-full">{{ titulo }}</h1>
+    <div class="grid grid-cols-4 gap-8 w-full">
+      
+      <div *ngFor="let receta of listaRecetas" class="w-full border p-4">
         <app-tarjeta-receta [receta]="receta"></app-tarjeta-receta> <!-- Componente hijo que muestra la receta -->
+      </div>
     </div>
-</div>
- 
+  </div>
 </div>

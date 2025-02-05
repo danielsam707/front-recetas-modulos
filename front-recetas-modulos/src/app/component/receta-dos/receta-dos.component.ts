@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RecipesTwoService } from '../../service/recipes-two.service';
 import { Meal } from '../../models/recepeTwo.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-receta-dos',
@@ -12,11 +13,16 @@ import { Meal } from '../../models/recepeTwo.model';
 export class RecetaDosComponent {
 
   meals: Meal[] = [];
+  recetaId:string = '';
 
-  constructor(private mealService: RecipesTwoService ) {}
+  constructor(
+    private mealService: RecipesTwoService,
+    private route: ActivatedRoute,
+  ) {}
 
   ngOnInit() {
-    this.loadMeals()
+    this.recetaId = this.route.snapshot.paramMap.get('id')!;
+    this.recetaPorId()
   }
 
   loadMeals(): void {
@@ -30,5 +36,15 @@ export class RecetaDosComponent {
       }
     );
   }
+
+  recetaPorId() {
+    this.mealService.recipeById(this.recetaId)
+    .subscribe( response => {
+      this.meals = this.mealService.transformMealData(response)
+    }
+    )
+  }
+
+
 
 }

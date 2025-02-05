@@ -29,11 +29,13 @@
             Crear receta
         </a>
     </div>
-
-    <!-- Sección de Recetas -->
-    <div class="grid grid-cols-4 gap-8 w-full">
-        <div *ngFor="let receta of listaRecetas" class="w-full border p-4">
-            <app-receta [receta]="receta"></app-receta> <!-- Componente hijo que muestra la receta -->
+    <div>
+        <h1 class="text-3xl font-semibold text-gray-900 mb-6 text-center w-full">{{ titulo }}</h1>
+        <!-- Sección de Recetas -->
+        <div class="grid grid-cols-4 gap-8 w-full">
+            <div *ngFor="let receta of listaRecetas" class="w-full border p-4">
+                <app-receta [receta]="receta"></app-receta> <!-- Componente hijo que muestra la receta -->
+            </div>
         </div>
     </div>
 </div>

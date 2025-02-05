@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MealsResponse, Meal, MealBasic } from '../models/recepeTwo.model';
+import { MealsResponse, Meal, MealBasic, Areas, Categories } from '../models/recepeTwo.model';
 
 @Injectable({
   providedIn: 'root'
@@ -50,10 +50,22 @@ export class RecipesTwoService {
   }
 
   getCategories() {
-    return this.http.get<any>(`${this.apiUrl}categories`);
+    return this.http.get<Categories[]>(`${this.apiUrl}categories`);
   }
 
   recipeByCategory(name: string) {
-    return this.http.get<MealBasic[]>(`${this.apiUrl}${name}`);
+    return this.http.get<MealBasic[]>(`${this.apiUrl}dynamic_list?c=${name}`);
+  }
+
+  recipeById(id: string) {
+    return this.http.get<Meal>(`${this.apiUrl}?i=${id}`)
+  }
+
+  recipeByArea(name: string) {
+    return this.http.get<Meal[]>(`${this.apiUrl}dynamic_list?a=${name}`);
+  }
+  
+  getArea() {
+    return this.http.get<Areas[]>(`${this.apiUrl}areas`)
   }
 }

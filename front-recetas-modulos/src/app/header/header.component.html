@@ -1,29 +1,39 @@
 <div>
-    <nav class="bg-white border-gray-200 dark:bg-gray-900">
+    <!-- Primer Navbar (Header) -->
+    <nav class="bg-white border-gray-200 dark:bg-gray-900 fixed top-0 left-0 right-0 z-50">
         <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
             <a href="https://flowbite.com" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
-                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Recetas.com</span>
             </a>
             <div class="flex items-center space-x-6 rtl:space-x-reverse">
-
                 <!-- Mostrar el nombre del usuario si está logueado -->
                 <span *ngIf="user" class="text-sm text-gray-700 dark:text-white">
                     Hola, {{ getUserName() }} <!-- Muestra el nombre del usuario -->
                 </span>
 
                 <!-- Enlace de Login si no hay usuario -->
-                <a *ngIf="!user" href="/login" class="text-sm text-blue-600 dark:text-blue-500 hover:underline">Login</a>
+                <a *ngIf="!user" href="/login"
+                    class="text-sm text-blue-600 dark:text-blue-500 hover:underline hover:text-blue-800 transition-all duration-300">
+                    <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors duration-300">
+                        Login
+                    </button>
+                </a>
 
                 <!-- Botón de logout si hay un usuario -->
-                <button *ngIf="user" (click)="logoutUser()" class="text-sm text-red-600 dark:text-red-500 hover:underline">
-                    Logout
+                <button *ngIf="user" (click)="logoutUser()"
+                    class="text-sm text-red-600 dark:text-red-500 hover:text-red-700 transition-all duration-300">
+                    <button class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors duration-300">
+                        Logout
+                    </button>
                 </button>
             </div>
         </div>
     </nav>
 
-    <nav class="bg-gray-50 dark:bg-gray-700">
+    <!-- Segundo Navbar -->
+    <nav class="bg-gray-50 dark:bg-gray-700 fixed top-16 left-0 right-0 z-40">
+        <!-- Aquí usamos top-16 para que esté debajo del primer header -->
         <div class="max-w-screen-xl px-4 py-3 mx-auto">
             <div class="flex items-center">
                 <ul class="flex flex-row font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm">
@@ -31,7 +41,8 @@
                         <a href="#" class="text-gray-900 dark:text-white hover:underline" aria-current="page">Home</a>
                     </li>
                     <li>
-                        <a href="#" class="text-gray-900 dark:text-white hover:underline">Otras recetas</a>
+                        <a routerLink="/lista-api"
+                            class="text-gray-900 dark:text-white hover:underline cursor-pointer">Otras recetas</a>
                     </li>
                 </ul>
             </div>

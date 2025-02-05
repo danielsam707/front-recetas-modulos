@@ -25,6 +25,10 @@ export interface Categories {
   strCategory: string;
 }
 
+export interface Areas {
+  strArea: string;
+}
+
 
 export interface MealBasic {
   strMeal: string;        // El nombre del plato

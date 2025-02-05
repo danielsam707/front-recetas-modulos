@@ -43,7 +43,7 @@ export class FomularioComponent {
       description: ['', Validators.required],
       ingredients: ['', Validators.required],
       instructions: ['', Validators.required],
-      category: ['', Validators.required], //
+      category_id: ['', Validators.required], //
       tags: [[[]], Validators.required],
       image: []
     });
