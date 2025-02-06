@@ -73,6 +73,7 @@ export class FomularioComponent {
       this.receta = response.data;
       console.log('Esto es desde el metodo obtener receta', this.receta)
       this.categoryname = this.receta.attributes.category;
+      
       this.obtenerCategoriaActual()
 
       // Rellenar el formulario con los datos de la receta
@@ -81,7 +82,7 @@ export class FomularioComponent {
         description: this.receta.attributes.description,
         ingredients: this.receta.attributes.ingredients,
         instructions: this.receta.attributes.instructions,
-        category: this.receta.attributes.category,
+        category_id: this.categoryId,
         tags: this.receta.attributes.tags,
         image: this.receta.attributes.image || '', // Si tienes imagen preexistente
       });
@@ -128,6 +129,8 @@ export class FomularioComponent {
     }
 
   }
+
+  
 
 
   //---------------------------------------------------------------------------------------------------------
