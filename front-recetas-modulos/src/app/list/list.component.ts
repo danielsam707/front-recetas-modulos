@@ -23,6 +23,12 @@ export class ListComponent {
   listaCategorias: Category[] = [];
   recetasUsuario: Recipe[] = [];
 
+  //paginacion
+  paginatedRecetas: Recipe[] = []; // Recetas que se mostrarán en la página actual
+  currentPage = 1;
+  totalPages = 0;
+  itemsPerPage = 9;  // Número de recetas por página
+
   constructor(
     private recipeService: RecipesService,
     private authService: AuthService,
@@ -49,6 +55,8 @@ export class ListComponent {
         if (this.user && this.user.name) {
           this.filtarPorUsuario();  // Filtrar las recetas de este usuario
         }
+        this.paginateRecetas();  // Llamar a la función de paginación después de obtener las recetas
+        
       }
     )
   }
@@ -72,6 +80,7 @@ export class ListComponent {
         this.listaRecetas = response.data.relationships.recipes;
         this.nombreFiltro = response.data.attributes.name
         this.titulo = `Lista de recetas filtrado por: ${this.nombreFiltro}`
+        this.paginateRecetas();  // Llamar a la función de paginación después de obtener las recetas
       }
     )
     console.log('Recetas de la categoría seleccionada:', this.listaRecetas);
@@ -85,6 +94,7 @@ export class ListComponent {
     this.recipeService.setRecetasUsuario(this.recetasUsuario);
     console.log('Esta es la lista del usuario',this.recetasUsuario);
     this.titulo = 'Mis recetas'
+    this.paginateRecetas();  // Llamar a la función de paginación después de obtener las recetas
     
   }
   
@@ -98,6 +108,31 @@ export class ListComponent {
   listarTodas() {
     this.listaRecetas = this.listaBoton;
     this.titulo = 'Todas las recetas'
+    this.paginateRecetas();  // Llamar a la función de paginación después de obtener las recetas
+  }
+
+  // Función para dividir las recetas en páginas
+  paginateRecetas() {
+    this.totalPages = Math.ceil(this.listaRecetas.length / this.itemsPerPage);  // Total de páginas
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.paginatedRecetas = this.listaRecetas.slice(startIndex, endIndex);  // Obtener recetas para la página actual
+  }
+
+  // Navegar a la página siguiente
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.paginateRecetas();  // Actualizar las recetas visibles para la nueva página
+    }
+  }
+
+  // Navegar a la página anterior
+  previousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.paginateRecetas();  // Actualizar las recetas visibles para la nueva página
+    }
   }
 
 }

@@ -19,7 +19,7 @@ export class ListaDosComponent {
   titulo: string = 'Lista de recetas';
   currentPage = 1;
   totalPages = 0;
-  itemsPerPage = 8;  // Número de recetas por página
+  itemsPerPage = 9;  // Número de recetas por página
 
   constructor(
     private recipeService: RecipesTwoService,
