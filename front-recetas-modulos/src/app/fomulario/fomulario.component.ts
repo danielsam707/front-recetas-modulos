@@ -19,13 +19,16 @@ import { CommonModule } from '@angular/common';
 export class FomularioComponent {
 
   listaCategorias: Category[] = [];
-  tags: Tag[] = [];
+  listaTags: Tag[] = [];
   recetaForm: FormGroup;
   isEditing: boolean = false; // Para saber si estamos editando
   receta!: Recipe;
   recetaId: string | null = null; // Para almacenar el id de la receta
   categoryname: string = '';
   categoryId!: number;
+
+  tagName: string = '';
+  tagId!: number; 
 
   //---------------------------------------------------------------------------------------------------------------
   constructor(
@@ -44,7 +47,7 @@ export class FomularioComponent {
       ingredients: ['', Validators.required],
       instructions: ['', Validators.required],
       category_id: ['', Validators.required], //
-      tags: [[[]], Validators.required],
+      tags: ['', Validators.required],
       image: []
     });
   }
@@ -72,9 +75,14 @@ export class FomularioComponent {
     this.recipeService.getRecipeById(id).subscribe((response) => {
       this.receta = response.data;
       console.log('Esto es desde el metodo obtener receta', this.receta)
+      const nombreTag = this.receta.attributes.tags
+      console.log('Esta es la tag', nombreTag)
+      console.log('tipo de dato de Tag', typeof(nombreTag))
+      // console.log('Este es el valor del tag ')
       this.categoryname = this.receta.attributes.category;
-      
+      this.tagName = this.receta.attributes.tags
       this.obtenerCategoriaActual()
+      this.obtenerTagActual()
 
       // Rellenar el formulario con los datos de la receta
       this.recetaForm.setValue({
@@ -83,9 +91,11 @@ export class FomularioComponent {
         ingredients: this.receta.attributes.ingredients,
         instructions: this.receta.attributes.instructions,
         category_id: this.categoryId,
-        tags: this.receta.attributes.tags,
+        tags: this.tagId,
         image: this.receta.attributes.image || '', // Si tienes imagen preexistente
       });
+
+      
 
     });
   }
@@ -96,8 +106,8 @@ export class FomularioComponent {
   obtenerTags() {
     this.recipeService.getTags().subscribe((response) => {
       //console.log('Esta es la lista de tags', response);
-      this.tags = response.data
-      console.log('Lista de tags dentro de data', this.tags)
+      this.listaTags = response.data
+      console.log('Lista de tags dentro de data', this.listaTags)
 
     });
   }
@@ -120,7 +130,6 @@ export class FomularioComponent {
 
     // Buscar la categoría por nombre y obtener el id
     const categoriaEncontrada = this.listaCategorias.find(category => category.attributes.name === this.categoryname);
-
     if (categoriaEncontrada) {
       this.categoryId = categoriaEncontrada.id;  // Guardamos el id de la categoría
       console.log('ID de la categoría encontrada:', this.categoryId);
@@ -130,13 +139,27 @@ export class FomularioComponent {
 
   }
 
-  
+  obtenerTagActual() {
+    const tagEncontrado = this.listaTags.find(tag => tag.attributes.name === this.tagName );
+    console.log('Este es el tipo de dato del id del tagEncontrado',tagEncontrado);
+    if(tagEncontrado) {
+      this.tagId = tagEncontrado.id
+      console.log('ID de la etiquta encontrada: ', this.tagId);
+      
+    } else {
+      console.log('Etiqueta no encontrada');
+      
+    }
+    
+  }
 
 
   //---------------------------------------------------------------------------------------------------------
   onSubmit() {
     if (this.recetaForm.valid) {
       const formData = new FormData();
+
+      
 
       // Agregar los valores del formulario al FormData
       formData.append('title', this.recetaForm.get('title')?.value);
@@ -182,6 +205,10 @@ export class FomularioComponent {
 
   capture(e: any) {
     console.log(e)
+
+  }
+
+  onEdit() {
 
   }
 

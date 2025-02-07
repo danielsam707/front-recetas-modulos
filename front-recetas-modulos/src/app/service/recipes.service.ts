@@ -63,6 +63,10 @@ export class RecipesService {
     return this.http.post(`${this.apiUrl}/api/v1/recipes`, formData);
   }
 
+  updateRecipe(formData: FormData,id: string) {
+    return this.http.put(`${this.apiUrl}/api/v1/recipes${id}`, formData);
+  }
+
   deleteRecipe(id: string) {
     console.log('id en servicio', id)
     return this.http.delete<any>(`${this.apiUrl}/api/v1/recipes/${id}`);
