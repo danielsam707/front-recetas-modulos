@@ -1,6 +1,6 @@
 <div class="flex space-x-4 my-5 mx-5">
-  <!-- Sección de Categorías -->
-  <div class="w-80 mt-14">
+  <!-- Sección de Categorías (20%) -->
+  <div class="w-1/5 mt-14">
     <h2 class="text-2xl font-semibold text-gray-900 mb-4">Categorías</h2>
     <ul class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
       <li *ngFor="let categoria of listaCategorias" (click)="recetasPorCategorias(categoria.strCategory)"
@@ -15,8 +15,8 @@
     </button><br><br><br>
   </div>
 
-  <!-- Sección de Recetas (Central, con paginación) -->
-  <div class="flex-1 ">
+  <!-- Sección de Recetas (60%) -->
+  <div class="flex-1 mt-14">
     <h1 class="text-3xl font-semibold text-gray-900 mb-6 text-center w-full">{{ titulo }}</h1>
     <div class="grid grid-cols-3 gap-8 w-full">
       <div *ngFor="let receta of paginatedRecetas" class="w-full border p-4">
@@ -36,8 +36,8 @@
     </div>
   </div>
 
-  <!-- Sección de Recetas por Áreas (Fijo a la derecha) -->
-  <div class="w-80 mt-14 ml-auto">
+  <!-- Sección de Recetas por Áreas (20%) -->
+  <div class="w-1/5 mt-14 ml-auto">
     <h2 class="text-2xl font-semibold text-gray-900 mb-4">Recetas por áreas</h2>
     <ul class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
       <li *ngFor="let area of listaAreas" (click)="recetasPorArea(area.strArea)"
