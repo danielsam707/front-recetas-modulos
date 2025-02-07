@@ -17,16 +17,19 @@ export class ListComponent {
   user!: Usuario;
   nombreFiltro: string = ''
   titulo:string = `Mis recetas`;
-  currentPage = 1;
-  totalPages = 0;
-  itemsPerPage = 9;  // Número de recetas por página
-    paginatedRecetas: Recipe[] = []; // Recetas que se mostrarán en la página actual
+ 
   
 
   listaRecetas: Recipe[] = [];
   listaBoton: Recipe[] = [];
   listaCategorias: Category[] = [];
   recetasUsuario: Recipe[] = [];
+
+  //paginacion
+  paginatedRecetas: Recipe[] = []; // Recetas que se mostrarán en la página actual
+  currentPage = 1;
+  totalPages = 0;
+  itemsPerPage = 9;  // Número de recetas por página
 
   constructor(
     private recipeService: RecipesService,
@@ -55,6 +58,8 @@ export class ListComponent {
           this.filtarPorUsuario();  // Filtrar las recetas de este usuario
         }
         this.paginateRecetas();  // Llamar a la función de paginación después de obtener las recetas
+        
+        
       }
     )
   }
@@ -81,6 +86,7 @@ export class ListComponent {
         this.titulo = `Lista de recetas filtrado por: ${this.nombreFiltro}`
         this.paginateRecetas();  // Llamar a la función de paginación después de obtener las recetas
 
+        this.paginateRecetas();  // Llamar a la función de paginación después de obtener las recetas
       }
     )
     console.log('Recetas de la categoría seleccionada:', this.listaRecetas);
@@ -94,6 +100,7 @@ export class ListComponent {
     this.recipeService.setRecetasUsuario(this.recetasUsuario);
     console.log('Esta es la lista del usuario',this.recetasUsuario);
     this.titulo = 'Mis recetas'
+    this.paginateRecetas();  // Llamar a la función de paginación después de obtener las recetas
     this.paginateRecetas();  // Llamar a la función de paginación después de obtener las recetas
     
   }
@@ -135,5 +142,7 @@ export class ListComponent {
     }
   }
 
+
+  
 
 }
