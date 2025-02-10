@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Category, CategoryData, Recipe, RecipeAttributes, RecipeData } from '../models/recipeData.model';
 import { RecipeAPost } from '../models/recipeData.model';
 import { BehaviorSubject } from 'rxjs';
+import { FormGroup } from '@angular/forms';
 
 
 @Injectable({
@@ -63,8 +64,10 @@ export class RecipesService {
     return this.http.post(`${this.apiUrl}/api/v1/recipes`, formData);
   }
 
-  updateRecipe(formData: FormData,id: string) {
-    return this.http.put(`${this.apiUrl}/api/v1/recipes${id}`, formData);
+  updateRecipe(formData: any,id: string | null) {
+    return this.http.put(`${this.apiUrl}/api/v1/recipes/${id}`, formData);
+    console.log('Mensaje desde el servicio en el metodo updataRecipe');
+    
   }
 
   deleteRecipe(id: string) {

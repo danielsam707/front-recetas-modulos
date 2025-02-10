@@ -95,8 +95,6 @@ export class FomularioComponent {
         image: this.receta.attributes.image || '', // Si tienes imagen preexistente
       });
 
-      
-
     });
   }
 
@@ -161,13 +159,15 @@ export class FomularioComponent {
 
       
 
-      // Agregar los valores del formulario al FormData
+    //  Agregar los valores del formulario al FormData
       formData.append('title', this.recetaForm.get('title')?.value);
       formData.append('description', this.recetaForm.get('description')?.value);
       formData.append('ingredients', this.recetaForm.get('ingredients')?.value);
       formData.append('instructions', this.recetaForm.get('instructions')?.value);
       formData.append('category_id', this.recetaForm.get('category_id')?.value);
-      formData.append('tags', JSON.stringify(this.recetaForm.get('tags')?.value));
+      formData.append('tags', this.recetaForm.get('tags')?.value);
+
+      
 
       // Obtener el archivo de imagen del input
       const imageFile = (document.getElementById('image') as HTMLInputElement).files?.[0];
@@ -184,20 +184,76 @@ export class FomularioComponent {
         console.log(`${key}:`, value);
       });
 
-      // Realizar la solicitud
+      console.log('Imprimiendo el valor de isEditin antes de enviar los datos', this.isEditing);
+      
+
+      if (!this.isEditing) {
+        // Realizar la solicitud
       this.recipeService.createRecipe(formData).subscribe({
         next: (response) => {
           console.log('Receta creada con éxito', response);
-          this.router.navigate(['']);
+          this.router.navigate([''], { state: { successMessage: 'Receta creada con éxito ✅' } });
+          
         },
         error: (err) => {
           console.error('Error al crear receta', err);
         }
       });
+      } 
+
+
     } else {
       console.log('Formulario no válido');
     }
 
+    this.router.navigate(['']);
+  }
+
+//----------------------------------------------------------------------------------------------
+
+  editar() {
+    if (this.recetaForm.valid) {
+      const formData = new FormData();
+
+      const data = {
+        title: this.recetaForm.get('title')?.value,
+        description: this.recetaForm.get('description')?.value,
+        ingredients: this.recetaForm.get('ingredients')?.value,
+        instructions: this.recetaForm.get('instructions')?.value,
+        category_id: this.recetaForm.get('category_id')?.value,
+        tags: this.recetaForm.get('tags')?.value,
+        image: this.recetaForm.get('image')?.value
+      };
+
+      // Aquí imprimimos todo el contenido de formData
+      formData.forEach((value, key) => {
+        console.log(`${key}:`, value);
+      });
+
+      console.log('Imprimiendo el valor de isEditin antes de enviar los datos', this.isEditing);
+      
+
+      if (this.isEditing) {
+        // Realizar la solicitud
+        this.recipeService.updateRecipe(data, this.recetaId)
+        .subscribe( {
+          next: (response) => {
+            console.log('Receta modificada con éxito', response);
+          },
+          error: (err) => {
+            console.error('Error al modificar la receta', err);
+            
+            
+          }
+        })
+      }
+
+
+    } else {
+      console.log('Formulario no válido');
+    }
+
+    // Redirigir a la pagina principal
     this.router.navigate(['']);
   }
 
@@ -207,11 +263,7 @@ export class FomularioComponent {
     console.log(e)
 
   }
-
-  onEdit() {
-
-  }
-
+  
 
 }
 

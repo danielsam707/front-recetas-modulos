@@ -50,6 +50,7 @@ export class ListaDosComponent {
     this.titulo = `Lista de recetas filtradas por: ${this.nombreFiltro}`;
     this.recipeService.recipeByCategory(name).subscribe(response => {
       this.listaRecetas = response;
+      this.reiniciarPaginate();
       this.paginateRecetas();  // Llamar a la función de paginación después de obtener las recetas
     });
   }
@@ -60,6 +61,7 @@ export class ListaDosComponent {
     this.titulo = `Lista de recetas filtradas por área: ${this.nombreFiltro}`;
     this.recipeService.recipeByArea(area).subscribe(response => {
       this.listaRecetas = response;
+      this.reiniciarPaginate();
       this.paginateRecetas();  // Llamar a la función de paginación después de obtener las recetas
     });
   }
@@ -97,5 +99,11 @@ export class ListaDosComponent {
       // Redirigir al componente de detalles pasando el id de la receta aleatoria
       this.router.navigate([`/receta-api/${idRecetaAleatoria}`]);
     });
+  }
+
+  reiniciarPaginate() {
+    this.currentPage = 1;
+    this.totalPages = 0;
+    this.itemsPerPage = 9;  // Número de recetas por página
   }
 }

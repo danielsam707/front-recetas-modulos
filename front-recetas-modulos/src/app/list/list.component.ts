@@ -3,7 +3,7 @@ import { RecipesService } from '../service/recipes.service';
 import { Category, Recipe, CategoryRelationships } from '../models/recipeData.model';
 import { AuthService } from '../service/auth.service';
 import { Usuario } from '../models/usuario.model';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -31,17 +31,31 @@ export class ListComponent {
   totalPages = 0;
   itemsPerPage = 9;  // Número de recetas por página
 
+  successMessage: string = ''; // Mensaje de creacion exitosa o no
+
+
   constructor(
     private recipeService: RecipesService,
     private authService: AuthService,
+    private router: Router,
 
   ){}
 
 
   ngOnInit() {
+
+    
     this.listarRecetas()
     this.listarCategorias()
     this.datosUsuario()
+    
+    // const navigation = this.router.getCurrentNavigation();
+    // const state = navigation?.extras.state as { successMessage: string };
+    // this.successMessage = state?.successMessage || '';
+
+    this.successMessage = '¡Receta guardada exitosamente!';
+    
+    
     
   }
 
@@ -84,9 +98,9 @@ export class ListComponent {
         this.listaRecetas = response.data.relationships.recipes;
         this.nombreFiltro = response.data.attributes.name
         this.titulo = `Lista de recetas filtrado por: ${this.nombreFiltro}`
+        this.reiniciarPaginate()
         this.paginateRecetas();  // Llamar a la función de paginación después de obtener las recetas
 
-        this.paginateRecetas();  // Llamar a la función de paginación después de obtener las recetas
       }
     )
     console.log('Recetas de la categoría seleccionada:', this.listaRecetas);
@@ -100,7 +114,7 @@ export class ListComponent {
     this.recipeService.setRecetasUsuario(this.recetasUsuario);
     console.log('Esta es la lista del usuario',this.recetasUsuario);
     this.titulo = 'Mis recetas'
-    this.paginateRecetas();  // Llamar a la función de paginación después de obtener las recetas
+    this.reiniciarPaginate()
     this.paginateRecetas();  // Llamar a la función de paginación después de obtener las recetas
     
   }
@@ -140,6 +154,12 @@ export class ListComponent {
       this.currentPage--;
       this.paginateRecetas();  // Actualizar las recetas visibles para la nueva página
     }
+  }
+
+  reiniciarPaginate() {
+    this.currentPage = 1;
+    this.totalPages = 0;
+    this.itemsPerPage = 9;  // Número de recetas por página
   }
 
 

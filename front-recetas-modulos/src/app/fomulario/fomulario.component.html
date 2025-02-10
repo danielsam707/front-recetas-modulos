@@ -45,7 +45,7 @@
 
                     <!-- Modo Edición: Mostrar la categoría actual como texto (no seleccionable) -->
                     <option *ngIf="isEditing" [value]="categoryId">
-                        {{ "Prueba" }}
+                        {{ receta.attributes?.category }}
                     </option>
 
                     <!-- Mostrar todas las categorías disponibles -->
@@ -67,7 +67,7 @@
 
                     <!-- Modo Edición: Mostrar la categoría actual como texto (no seleccionable) -->
                     <option *ngIf="isEditing" [value]="tagId">
-                        {{ receta.attributes.tags }}
+                        {{ receta.attributes?.tags }}
                     </option>
 
                     <!-- Mostrar todas las categorías disponibles -->
@@ -99,7 +99,7 @@
             </button>
 
             <!-- Botón de Editar Receta -->
-            <button *ngIf="isEditing" (click)="onEdit()" type="button"
+            <button *ngIf="isEditing" (click)="editar()" type="button"
                 class="text-white bg-green-600 px-6 py-3 rounded-lg shadow-lg hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-500">
                 Enviar
             </button>

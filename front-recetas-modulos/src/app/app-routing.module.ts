@@ -8,6 +8,7 @@ import { DetalleRecetaComponent } from './detalle-receta/detalle-receta.componen
 import { FomularioComponent } from './fomulario/fomulario.component';
 import { RecetaDosComponent } from './component/receta-dos/receta-dos.component';
 import { ListaDosComponent } from './component/lista-dos/lista-dos.component';
+import { PaginaInicioComponent } from './pagina-inicio/pagina-inicio.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
     children: [
       {
         path: '',
+        component: PaginaInicioComponent
+      },
+      {
+        path: 'inicio',
         component: ListComponent
       },
       {
