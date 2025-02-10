@@ -35,7 +35,7 @@ export class HeaderComponent {
   logoutUser(): void {
     console.log('metodo logout')
     this.authService.logout()
-    this.router.navigate(['/login']); // Redirige al usuario al login (o a la página que prefieras)
+    this.router.navigate(['']); // Redirige al usuario al login (o a la página que prefieras)
   }
 
 

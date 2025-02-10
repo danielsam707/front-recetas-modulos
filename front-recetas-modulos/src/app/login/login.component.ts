@@ -28,7 +28,7 @@ export class LoginComponent {
     
     this.authServirce.login(this.email, this.password, this.device_name).subscribe(
       () => {
-        this.router.navigate(['']);
+        this.router.navigate(['/inicio']);
       },
       error => {
         console.error('Error de autenticacion', error);
