@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs';
 import { TokenService } from './token.service';
 import { BehaviorSubject } from 'rxjs';
+import { environment } from '../../enviroments/enviroment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class AuthService {
   private userSubject: BehaviorSubject<any> = new BehaviorSubject<any>(this.getUserFromLocalStorage());
   public user$ = this.userSubject.asObservable();  // Observable que otros componentes pueden suscribirse
 
-  apiUrl = "http://127.0.0.1:8000";  // URL de la API
+  apiUrl = environment.apiUrl // URL de la API
 
   constructor(
     private tokenService: TokenService,

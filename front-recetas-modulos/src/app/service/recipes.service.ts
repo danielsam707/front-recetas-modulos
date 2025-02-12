@@ -4,6 +4,7 @@ import { Category, CategoryData, Recipe, RecipeAttributes, RecipeData } from '..
 import { RecipeAPost } from '../models/recipeData.model';
 import { BehaviorSubject } from 'rxjs';
 import { FormGroup } from '@angular/forms';
+import { environment } from '../../enviroments/enviroment';
 
 
 @Injectable({
@@ -11,7 +12,7 @@ import { FormGroup } from '@angular/forms';
 })
 export class RecipesService {
 
-  apiUrl = "http://127.0.0.1:8000"
+  apiUrl = environment.apiUrl
 
   private recetasUsuarioSource = new BehaviorSubject<Recipe[]>([]);
   recetasUsuario$ = this.recetasUsuarioSource.asObservable();
