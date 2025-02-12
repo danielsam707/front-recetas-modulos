@@ -1,0 +1,15 @@
+<div class="group rounded-lg border">
+  <a class="w-full overflow-hidden rounded-t-lg bg-gray-200">
+    <!-- Imagen del plato -->
+    <img [src]="receta.strMealThumb" alt="{{ receta.strMeal }}"
+      class="h-60 w-60 object-cover object-center group-hover:opacity-75">
+  </a>
+  <div class="flex flex-col space-y-2 p-4">
+    <!-- Nombre del plato -->
+    <h3 class="text-lg text-gray-700"><strong>{{ receta.strMeal }}</strong></h3>
+    <!-- Aquí puedes agregar más información si fuera necesario -->
+    <a [routerLink]="['/receta-api', receta.idMeal]" class="w-full h-full block text-center"><button class="w-full text-black bg-gray-200 px-6 py-3 rounded-lg shadow-lg hover:bg-gray-300 font-medium text-sm">
+      ver receta</button></a>
+    
+  </div>
+</div>

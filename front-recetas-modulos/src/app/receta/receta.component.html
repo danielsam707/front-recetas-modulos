@@ -1,13 +1,13 @@
 <div class="group rounded-lg border">
-    <a  class="w-full overflow-hidden rounded-t-lg bg-gray-200">
-        <img src="./../../../public/img.jpg" alt="foto receta"
-            class="h-40 w-40 object-cover object-center group-hover:opacity-75">
+    <a class="w-full overflow-hidden rounded-t-lg bg-gray-200">
+        <!-- <img [src]="receta.attributes.image" alt="{{receta.attributes.title}}"
+            class="h-60 w-60 object-cover object-center group-hover:opacity-75"> -->
     </a>
     <div class="flex flex-col space-y-2 p-4">
-        <h3 class="text-sm text-gray-700">titulo de receta</h3>
-        <p class="text-lg font-medium text-gray-900">precio 4000</p>
-        <p class="text-sm font-medium text-gray-500">fecha de creacion</p>
-        <button class="text-black bg-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 w-full"
-            >ver receta</button>
+        <h3 class="text-lg text-gray-700"><strong>{{receta.attributes.title}}</strong></h3>
+        <p class="text-sm font-medium text-gray-500"><strong>Autor:</strong>{{ receta.attributes.author }}</p>
+        <p class="text-sm font-medium text-gray-500"><strong>Etiquetas:</strong>{{ receta.attributes.tags }}</p>
+        <a [routerLink]="['/detalle-receta', receta.id]" class="w-full block text-center"><button class="w-full text-black bg-gray-200 px-6 py-3 rounded-lg shadow-lg hover:bg-gray-300 font-medium text-sm">ver receta</button></a>
+        
     </div>
 </div>

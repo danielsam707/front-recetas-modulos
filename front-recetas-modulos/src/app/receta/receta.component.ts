@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Recipe, RecipeAttributes } from '../models/recipeData.model';
+import { RecipesService } from '../service/recipes.service';
 
 @Component({
   selector: 'app-receta',
@@ -8,5 +10,14 @@ import { Component } from '@angular/core';
   styleUrl: './receta.component.css'
 })
 export class RecetaComponent {
+
+  @Input() receta!: Recipe;
+
+  constructor(
+    private recipeService: RecipesService,
+  ) {}
+
+
+  
 
 }
