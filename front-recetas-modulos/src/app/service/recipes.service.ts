@@ -37,16 +37,16 @@ export class RecipesService {
 
   getAllRecipes() {
     
-    return this.http.get<RecipeData>(`${this.apiUrl}/api/v1/recipes`);
+    return this.http.get<RecipeData>(`${this.apiUrl}/v1/recipes`);
   }
 
   getAllCategory() {
     
-    return this.http.get<CategoryData>(`${this.apiUrl}/api/v1/categories`);
+    return this.http.get<CategoryData>(`${this.apiUrl}/v1/categories`);
   }
 
   getRecipesByCategory(id: number) {
-    return this.http.get<any>(`${this.apiUrl}/api/v1/categories/${id}`);
+    return this.http.get<any>(`${this.apiUrl}/v1/categories/${id}`);
   }
 
   setRecetasUsuario(recetas: Recipe[]) {
@@ -58,26 +58,26 @@ export class RecipesService {
   }
 
   getRecipeById(id: string) {
-    return this.http.get<any>(`${this.apiUrl}/api/v1/recipes/${id}`)
+    return this.http.get<any>(`${this.apiUrl}/v1/recipes/${id}`)
   }
 
   createRecipe(formData: FormData) {
-    return this.http.post(`${this.apiUrl}/api/v1/recipes`, formData);
+    return this.http.post(`${this.apiUrl}/v1/recipes`, formData);
   }
 
   updateRecipe(formData: any,id: string | null) {
-    return this.http.put(`${this.apiUrl}/api/v1/recipes/${id}`, formData);
+    return this.http.put(`${this.apiUrl}/v1/recipes/${id}`, formData);
     console.log('Mensaje desde el servicio en el metodo updataRecipe');
     
   }
 
   deleteRecipe(id: string) {
     console.log('id en servicio', id)
-    return this.http.delete<any>(`${this.apiUrl}/api/v1/recipes/${id}`);
+    return this.http.delete<any>(`${this.apiUrl}/v1/recipes/${id}`);
     console.log('Receta eliminada')
   }
 
   getTags() {
-    return this.http.get<any>(`${this.apiUrl}/api/v1/tags`);
+    return this.http.get<any>(`${this.apiUrl}/v1/tags`);
   }
 }

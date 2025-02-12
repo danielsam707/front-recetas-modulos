@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MealsResponse, Meal, MealBasic, Areas, Categories } from '../models/recepeTwo.model';
+import { environment } from '../../enviroments/enviroment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecipesTwoService {
 
-  private apiUrl = "http://127.0.0.1:8000/api/v3/recipes/"
+    private apiUrl = `${environment.apiUrl}/v3/recipes/`;
+  //"http://127.0.0.1:8000/api/v3/recipes/"
 
   constructor( private http: HttpClient) { }
 
