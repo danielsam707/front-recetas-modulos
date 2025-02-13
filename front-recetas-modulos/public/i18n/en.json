@@ -1,0 +1,82 @@
+{
+  "CATEGORIES": "Categories",
+  "ACTIONS": "Actions",
+  "MY_RECIPES": "My Recipes",
+  "ALL_RECIPES": "All Recipes",
+  "FILTERED_RECIPES_LIST": "List of recipes filtered by:",
+  "PAGE": "Page",
+  "OF": "of",
+
+  
+  "BTN_CREATE_RECIPE": "Create Recipe",
+  "BTN_MY_RECIPES": "My Recipes",
+  "BTN_ALL_RECIPES": "All Recipes",
+
+  "BTN_VIEW_DETAIL": "View Details",
+  "AUTHOR": "Author",
+  "TAGS": "Tags",
+
+
+  "LINK_HOME": "Home", 
+  "LINK_OTHER_RECIPES": "Other Recipes",
+  "HELLO": "Hello",
+  "BTN_LOGIN": "Login",
+  "BTN_LOGOUT": "Logout",
+
+
+  "DESCRIPTION": "Description",
+  "INGREDIENTS": "Ingredients",
+  "INSTRUCTIONS": "Instructions",
+  "BY": "By",
+  "CATEGORY": "Category",
+  "RECIPE_IMAGE": "Recipe image",
+  "BTN_EDIT_RECIPE": "Edit recipe",
+  "BTN_DELETE_RECIPE": "Delete recipe",
+
+
+  "CREATE_NEW_RECIPE": "Create new recipe",
+  "LBL_TITLE": "Title",
+  "LBL_DESCRIPTION": "Description",
+  "LBL_INGREDIENTS": "Ingredients",
+  "LBL_INSTRUCTIONS": "Instructions",
+  "LBL_IMAGE": "Image (optional)",
+  "INP_SELECT_CATEGORY": "Select a category",
+  "INP_SELECT_TAG": "Select a tag",
+  "BTN_CREATE": "Create",
+  "BTN_SEND": "Send",
+  
+
+
+  "RECIPES_BY_AREAS": "Recipes by areas",
+  "RANDOM_RECIPE": "Random recipe",
+  "BTN_GENERATE_RANDOM_RECIPE": "Generate random recipe",
+  "BTN_PREVIOUS": "Previous",
+  "BTN_NEXT": "Next",
+
+  "INSTRUCTIONS_LABEL": "Instructions:",
+  "INGREDIENTS_LABEL": "Ingredients:",
+  "WATCH_ON_YOUTUBE": "Watch on YouTube",
+  "LINK_WATCH_VIDEO_RECIPE": "Watch recipe video",
+  "BTN_BACK_TO_LIST": "Back to recipe list",
+
+
+
+  "WELCOME_MESSAGE": "Welcome to Recetas.com",
+  "DISCOVER_DELICIOUS_RECIPES": "Discover delicious recipes",
+  "EXPLORE_COOK_SHARE": "Explore, cook, and share your favorite dishes from around the world.",
+  "OUR_RECIPE_SOURCES": "Our Recipe Sources",
+  "OWN_API": "Own API",
+  "OWN_API_DESCRIPTION": "Developed by Daniel Arias, this API offers personalized recipes managed by our community.",
+  "THEMEALDB_API_DESCRIPTION": "Access a large public database of international recipes from",
+  "HAVE_A_RECIPE_TO_SHARE": "Do you have a recipe to share?",
+  "CONTACT_US_INVITATION": "Contact us and become part of our community of chefs.",
+  "BTN_CONTACT_US": "Contact us",
+
+
+  
+  "YOUR_EMAIL": "Your email",
+  "YOUR_PASSWORD": "Your password",
+  "REMEMBER_ME": "Remember me",
+  "BTN_SUBMIT": "Submit"
+  
+}

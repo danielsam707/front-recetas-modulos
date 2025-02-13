@@ -1,0 +1,76 @@
+{
+  "CATEGORIES": "Categorías",
+  "ACTIONS": "Acciones",
+  "MY_RECIPES": "Mis recetas",
+  "ALL_RECIPES": "Todas las recetas",
+  "FILTERED_RECIPES_LIST": "Lista de recetas filtrada por:",
+  "PAGE": "Página",
+  "OF": "de",
+  
+  "BTN_CREATE_RECIPE": "Crear receta",
+  "BTN_MY_RECIPES": "Mis recetas",
+  "BTN_ALL_RECIPES": "Todas las recetas",
+
+  "BTN_VIEW_DETAIL": "Ver detalles",
+  "AUTHOR": "Autor",
+  "TAGS": "Etiquetas",
+
+  "LINK_HOME": "Inicio", 
+  "LINK_OTHER_RECIPES": "Otras recetas",
+  "HELLO": "Hola",
+  "BTN_LOGIN": "Iniciar sesión",
+  "BTN_LOGOUT": "Cerrar sesión",
+
+  "DESCRIPTION": "Descripción",
+  "INGREDIENTS": "Ingredientes",
+  "INSTRUCTIONS": "Instrucciones",
+  "BY": "Por",
+  "CATEGORY": "Categoría",
+  "RECIPE_IMAGE": "Imagen de la receta",
+  "BTN_EDIT_RECIPE": "Editar receta",
+  "BTN_DELETE_RECIPE": "Eliminar receta",
+
+  "CREATE_NEW_RECIPE": "Crear nueva receta",
+  "LBL_TITLE": "Título",
+  "LBL_DESCRIPTION": "Descripción",
+  "LBL_INGREDIENTS": "Ingredientes",
+  "LBL_INSTRUCTIONS": "Instrucciones",
+  "LBL_IMAGE": "Imagen (opcional)",
+  "INP_SELECT_CATEGORY": "Selecciona una categoría",
+  "INP_SELECT_TAG": "Selecciona una etiqueta",
+
+  "RECIPES_BY_AREAS": "Recetas por áreas",
+  "RANDOM_RECIPE": "Receta aleatoria",
+  "BTN_GENERATE_RANDOM_RECIPE": "Generar receta aleatoria",
+  "BTN_PREVIOUS": "Anterior",
+  "BTN_NEXT": "Siguiente",
+
+  "INSTRUCTIONS_LABEL": "Instrucciones:",
+  "INGREDIENTS_LABEL": "Ingredientes:",
+  "WATCH_ON_YOUTUBE": "Ver en YouTube",
+  "LINK_WATCH_VIDEO_RECIPE": "Ver receta en video",
+  "BTN_BACK_TO_LIST": "Volver a la lista de recetas", 
+
+
+  "WELCOME_MESSAGE": "Bienvenidos a Recetas.com",
+  "DISCOVER_DELICIOUS_RECIPES": "Descubre recetas deliciosas",
+  "EXPLORE_COOK_SHARE": "Explora, cocina y comparte tus platos favoritos de todo el mundo.",
+  
+  "OUR_RECIPE_SOURCES": "Nuestras Fuentes de Recetas",
+  "OWN_API": "API Propia",
+  "OWN_API_DESCRIPTION": "Desarrollada por Daniel Arias, esta API ofrece recetas personalizadas y gestionadas por nuestra comunidad.",
+  "THEMEALDB_API_DESCRIPTION": "Accede a una amplia base de datos pública de recetas internacionales desde",
+  
+  "HAVE_A_RECIPE_TO_SHARE": "¿Tienes una receta para compartir?",
+  "CONTACT_US_INVITATION": "Contáctanos y forma parte de nuestra comunidad de chefs.",
+  "BTN_CONTACT_US": "Contáctanos",
+
+
+  "YOUR_EMAIL": "Tu correo electrónico",
+  "YOUR_PASSWORD": "Tu contraseña",
+  "REMEMBER_ME": "Recuérdame",
+  "BTN_SUBMIT": "Enviar"
+
+  
+
+}

@@ -9,13 +9,13 @@
 
     <!-- Instrucciones -->
     <div class="instructions-container mb-6">
-      <h4 class="text-xl font-semibold text-green-500 mb-2">Instrucciones:</h4>
+      <h4 class="text-xl font-semibold text-green-500 mb-2">{{ t('INSTRUCTIONS_LABEL')}}</h4>
       <p class="text-gray-600 text-lg leading-relaxed">{{ meal.strInstructions }}</p>
     </div>
 
     <!-- Ingredientes -->
     <div class="ingredients-container mb-6">
-      <h4 class="text-xl font-semibold text-green-500 mb-2">Ingredientes:</h4>
+      <h4 class="text-xl font-semibold text-green-500 mb-2">{{ t('INGREDIENTS_LABEL')}}</h4>
       <ul class="list-none pl-0">
         <li *ngFor="let ingredient of meal.strIngredients; let i = index" class="text-lg text-gray-600 mb-2">
           <span class="font-semibold">{{ ingredient }}</span> - <span class="italic text-gray-500">{{ meal.strMeasures[i] }}</span>
@@ -25,15 +25,14 @@
 
     <!-- Video de YouTube -->
     <div class="video-container mb-6">
-      <h4 class="text-xl font-semibold text-green-500 mb-2">Ver en YouTube:</h4>
-      <a [href]="meal.strYoutube" target="_blank" class="text-blue-500 text-lg hover:underline">Ver receta en video</a>
+      <h4 class="text-xl font-semibold text-green-500 mb-2">{{ t('WATCH_ON_YOUTUBE')}}:</h4>
+      <a [href]="meal.strYoutube" target="_blank" class="text-blue-500 text-lg hover:underline">{{ t('LINK_WATCH_VIDEO_RECIPE')}}</a>
     </div>
 
     <!-- Botón para volver a la lista de recetas -->
   <div class="text-center mt-6">
     <a routerLink="/lista-api" class="text-white bg-blue-600 px-6 py-3 rounded-lg shadow-lg hover:bg-blue-700">
-      Volver a la lista de recetas
-    </a>
+      {{ t('BTN_BACK_TO_LIST')}}    </a>
   </div>
   </div>
 </div>

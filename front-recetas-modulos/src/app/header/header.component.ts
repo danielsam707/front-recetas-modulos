@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
+import { TranslationService } from '../service/translation.service';
 
 @Component({
   selector: 'app-header',
@@ -14,6 +15,8 @@ export class HeaderComponent {
   constructor(
     public router: Router,
     private authService: AuthService,
+        private translationService: TranslationService,
+    
   ) {
 
   }
@@ -36,6 +39,10 @@ export class HeaderComponent {
     console.log('metodo logout')
     this.authService.logout()
     this.router.navigate(['']); // Redirige al usuario al login (o a la página que prefieras)
+  }
+
+  t(key: string) {
+    return this.translationService.translate(key);
   }
 
 

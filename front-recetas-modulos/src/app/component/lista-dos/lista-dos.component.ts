@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RecipesTwoService } from '../../service/recipes-two.service';
 import { Categories, Areas, MealBasic } from '../../models/recepeTwo.model';
 import { Router } from '@angular/router';
+import { TranslationService } from '../../service/translation.service';
 
 @Component({
   selector: 'app-lista-dos',
@@ -23,7 +24,10 @@ export class ListaDosComponent {
 
   constructor(
     private recipeService: RecipesTwoService,
-    private router: Router
+    private router: Router,
+    private translationService: TranslationService,
+    
+
   ) {}
 
   ngOnInit() {
@@ -106,4 +110,9 @@ export class ListaDosComponent {
     this.totalPages = 0;
     this.itemsPerPage = 9;  // Número de recetas por página
   }
+
+  t(key: string) {
+    return this.translationService.translate(key);
+  }
+
 }

@@ -6,6 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { TranslationService } from '../service/translation.service';
 
 
 
@@ -36,6 +37,8 @@ export class FomularioComponent {
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
+    private translationService: TranslationService,
+    
 
 
   ) {
@@ -261,9 +264,12 @@ export class FomularioComponent {
 
   capture(e: any) {
     console.log(e)
-
   }
   
+  
+  t(key: string) {
+    return this.translationService.translate(key);
+  }
 
 }
 

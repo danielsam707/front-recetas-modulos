@@ -3,6 +3,7 @@ import { AuthService } from '../service/auth.service';
 import { Usuario } from '../models/usuario.model';
 import { Router } from '@angular/router';
 import { TokenService } from '../service/token.service';
+import { TranslationService } from '../service/translation.service';
 
 @Component({
   selector: 'app-login',
@@ -21,6 +22,8 @@ export class LoginComponent {
     private authServirce: AuthService,
     private router: Router,
     private tokenService: TokenService,
+    private translationService: TranslationService,
+    
     
   ) {}
 
@@ -34,6 +37,10 @@ export class LoginComponent {
         console.error('Error de autenticacion', error);
       }
     )
+  }
+
+  t(key: string) {
+    return this.translationService.translate(key);
   }
 
 }

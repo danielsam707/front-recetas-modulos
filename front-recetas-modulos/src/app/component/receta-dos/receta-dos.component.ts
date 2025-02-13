@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { RecipesTwoService } from '../../service/recipes-two.service';
 import { Meal } from '../../models/recepeTwo.model';
 import { ActivatedRoute } from '@angular/router';
+import { TranslationService } from '../../service/translation.service';
+
+
 
 @Component({
   selector: 'app-receta-dos',
@@ -18,6 +21,8 @@ export class RecetaDosComponent {
   constructor(
     private mealService: RecipesTwoService,
     private route: ActivatedRoute,
+    private translationService: TranslationService,
+    
   ) {}
 
   ngOnInit() {
@@ -43,6 +48,9 @@ export class RecetaDosComponent {
       this.meals = this.mealService.transformMealData(response)
     }
     )
+  }
+  t(key: string) {
+    return this.translationService.translate(key);
   }
 
 

@@ -10,21 +10,21 @@
             <div class="flex items-center space-x-6 rtl:space-x-reverse">
                 <!-- Mostrar el nombre del usuario si está logueado -->
                 <span *ngIf="user" class="text-sm text-gray-700 dark:text-white">
-                    Hola, {{ getUserName() }}
+                    {{ t('HELLO')}}, {{ getUserName() }}
                 </span>
 
                 <!-- Enlace de Login si no hay usuario y no estamos en la página de login -->
                 <a *ngIf="!user && router.url !== '/login'" routerLink="/login"
                     class="text-sm text-blue-600 dark:text-blue-500 hover:underline hover:text-blue-800 transition-all duration-300">
                     <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors duration-300">
-                        Login
+                        {{ t('BTN_LOGIN')}}
                     </button>
                 </a>
 
                 <!-- Botón de logout si hay un usuario -->
                 <button *ngIf="user" (click)="logoutUser()"
                     class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors duration-300">
-                    Logout
+                    {{ t('BTN_LOGOUT')}}
                 </button>
             </div>
         </div>
@@ -37,11 +37,11 @@
             <div class="flex items-center">
                 <ul class="flex flex-row font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm">
                     <li>
-                        <a routerLink="inicio" class="text-gray-900 dark:text-white hover:underline" aria-current="page">Home</a>
+                        <a routerLink="inicio" class="text-gray-900 dark:text-white hover:underline" aria-current="page">{{ t('LINK_HOME')}}</a>
                     </li>
                     <li>
                         <a routerLink="/lista-api"
-                           class="text-gray-900 dark:text-white hover:underline cursor-pointer">Otras recetas</a>
+                           class="text-gray-900 dark:text-white hover:underline cursor-pointer">{{ t('LINK_OTHER_RECIPES')}}</a>
                     </li>
                 </ul>
             </div>

@@ -4,7 +4,9 @@ import { Category, Recipe, CategoryRelationships } from '../models/recipeData.mo
 import { AuthService } from '../service/auth.service';
 import { Usuario } from '../models/usuario.model';
 import { Router, RouterLink } from '@angular/router';
-
+import { TranslationService } from '../service/translation.service';
+import es from '../../../public/i18n/es.json';
+import en from '../../../public/i18n/en.json'
 @Component({
   selector: 'app-list',
   standalone: false,
@@ -38,6 +40,7 @@ export class ListComponent {
     private recipeService: RecipesService,
     private authService: AuthService,
     private router: Router,
+    private translationService: TranslationService,
 
   ){}
 
@@ -163,6 +166,12 @@ export class ListComponent {
   }
 
 
-  
+  t(key: string) {
+    return this.translationService.translate(key);
+  }
+
+  changeLanguage(lang: 'es' | 'en') {
+    this.translationService.setLanguage(lang);
+  }
 
 }

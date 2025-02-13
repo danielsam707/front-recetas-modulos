@@ -2,34 +2,34 @@
 <div class="relative w-full h-96 overflow-hidden rounded-lg">
     <img src="/img/receta1.jpg" class="w-full h-full object-cover" alt="Imagen de receta destacada">
     <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-        <h1 class="text-white text-4xl font-bold">Bienvenidos a Recetas.com</h1>
+        <h1 class="text-white text-4xl font-bold">{{ t('WELCOME_MESSAGE')}}</h1>
     </div>
 </div>
 
 <!-- Sección de Información de la Página -->
 <section class="bg-gray-100 py-10 px-5 text-center">
-    <h2 class="text-3xl font-bold text-gray-800">Descubre recetas deliciosas</h2>
-    <p class="mt-4 text-gray-600">Explora, cocina y comparte tus platos favoritos de todo el mundo.</p>
+    <h2 class="text-3xl font-bold text-gray-800">{{ t('DISCOVER_DELICIOUS_RECIPES')}}</h2>
+    <p class="mt-4 text-gray-600">{{ t('EXPLORE_COOK_SHARE')}}</p>
 </section>
 
 <!-- Sección de APIs -->
 <section class="py-10 px-5 bg-white text-center">
-    <h3 class="text-2xl font-semibold text-gray-800">Nuestras Fuentes de Recetas</h3>
+    <h3 class="text-2xl font-semibold text-gray-800">{{ t('OUR_RECIPE_SOURCES')}}</h3>
     <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8">
         <div class="p-5 border rounded shadow-md">
-            <h4 class="text-xl font-bold">API Propia</h4>
-            <p class="mt-2 text-gray-600">Desarrollada por Daniel Arias, esta API ofrece recetas personalizadas y gestionadas por nuestra comunidad.</p>
+            <h4 class="text-xl font-bold">{{ t('OWN_API')}}</h4>
+            <p class="mt-2 text-gray-600">{{ t('OWN_API_DESCRIPTION')}}</p>
         </div>
         <div class="p-5 border rounded shadow-md">
             <h4 class="text-xl font-bold">TheMealDB API</h4>
-            <p class="mt-2 text-gray-600">Accede a una amplia base de datos pública de recetas internacionales desde <a href="https://www.themealdb.com" class="text-blue-500 underline">TheMealDB</a>.</p>
+            <p class="mt-2 text-gray-600">{{ t('THEMEALDB_API_DESCRIPTION')}} <a href="https://www.themealdb.com" class="text-blue-500 underline">TheMealDB</a>.</p>
         </div>
     </div>
 </section>
 
 <!-- Sección de Contacto -->
 <section class="bg-gray-800 text-white py-10 px-5 text-center">
-    <h3 class="text-2xl font-bold">¿Tienes una receta para compartir?</h3>
-    <p class="mt-4">Contáctanos y forma parte de nuestra comunidad de chefs.</p>
-    <button class="mt-4 px-6 py-2 bg-blue-500 hover:bg-blue-600 rounded text-white">Contáctanos</button>
+    <h3 class="text-2xl font-bold">{{ t('HAVE_A_RECIPE_TO_SHARE')}}</h3>
+    <p class="mt-4">{{ t('CONTACT_US_INVITATION')}}</p>
+    <button class="mt-4 px-6 py-2 bg-blue-500 hover:bg-blue-600 rounded text-white">{{ t('BTN_CONTACT_US')}}</button>
 </section>

@@ -7,7 +7,7 @@
 
     <!-- Sección de Categorías -->
     <div class="w-80 mt-14">
-        <h2 class="text-2xl font-semibold text-gray-900 mb-4">Categorías</h2>
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">{{ t('CATEGORIES')}}</h2>
         <ul class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
             <li *ngFor="let categoria of listaCategorias" 
                 (click)="filtrarPorCategoria(categoria.id)"
@@ -29,27 +29,27 @@
         <!-- Controles de Paginación -->
         <div class="flex justify-center mt-4">
             <button (click)="previousPage()" [disabled]="currentPage === 1"
-                class="px-4 py-2 mx-2 bg-blue-500 text-white rounded hover:bg-blue-700">Anterior</button>
-            <span class="text-lg font-semibold">Página {{ currentPage }} de {{ totalPages }}</span>
+                class="px-4 py-2 mx-2 bg-blue-500 text-white rounded hover:bg-blue-700">{{ t('BTN_PREVIOUS')}}</button>
+            <span class="text-lg font-semibold">{{ t('PAGE')}} {{ currentPage }} {{ t('OF')}} {{ totalPages }}</span>
             <button (click)="nextPage()" [disabled]="currentPage === totalPages"
-                class="px-4 py-2 mx-2 bg-blue-500 text-white rounded hover:bg-blue-700">Siguiente</button>
+                class="px-4 py-2 mx-2 bg-blue-500 text-white rounded hover:bg-blue-700">{{ t('BTN_NEXT')}}</button>
         </div>
     </div>
 
     <!-- Sección de Botones -->
     <div class="flex flex-col justify-start items-end w-50 space-y-2 mt-14">
-        <h2 class="text-2xl font-semibold text-gray-900 mb-4">Acciones</h2>
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">{{ t('ACTIONS')}}</h2>
         <a routerLink="/formulario"
             class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
-            Crear receta
+            {{ t('BTN_CREATE_RECIPE')}}
         </a>
         <button (click)="filtarPorUsuario()" type="button"
             class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
-            Mis recetas
+            {{ t('BTN_MY_RECIPES')}}
         </button>
         <button (click)="listarTodas()" type="button"
             class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
-            Todas las recetas
+            {{ t('BTN_ALL_RECIPES')}}
         </button><br><br>
     </div>
 </div>

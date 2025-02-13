@@ -9,7 +9,7 @@
     <h3 class="text-lg text-gray-700"><strong>{{ receta.strMeal }}</strong></h3>
     <!-- Aquí puedes agregar más información si fuera necesario -->
     <a [routerLink]="['/receta-api', receta.idMeal]" class="w-full h-full block text-center"><button class="w-full text-black bg-gray-200 px-6 py-3 rounded-lg shadow-lg hover:bg-gray-300 font-medium text-sm">
-      ver receta</button></a>
+      {{ t('BTN_VIEW_DETAIL')}}</button></a>
     
   </div>
 </div>

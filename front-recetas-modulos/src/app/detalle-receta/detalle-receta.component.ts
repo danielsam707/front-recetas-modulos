@@ -4,6 +4,7 @@ import { RecipesService } from '../service/recipes.service';
 import { Recipe, RecipeAttributes } from '../models/recipeData.model';
 import { Observable } from 'rxjs';
 import { RouterLink, RouterLinkActive, Router } from '@angular/router';
+import { TranslationService } from '../service/translation.service';
 
 @Component({
   selector: 'app-detalle-receta',
@@ -26,6 +27,8 @@ export class DetalleRecetaComponent {
     private router: Router,
     private route: ActivatedRoute,
     private recipeService: RecipesService,
+    private translationService: TranslationService,
+    
   ) { this.recetasUsuario$ = this.recipeService.recetasUsuario$;
   }
 
@@ -82,5 +85,9 @@ export class DetalleRecetaComponent {
     this.router.navigate(['']);
   }
   
+
+  t(key: string) {
+    return this.translationService.translate(key);
+  }
   
 }
