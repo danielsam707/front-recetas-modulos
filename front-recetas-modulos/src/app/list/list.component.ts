@@ -18,8 +18,8 @@ export class ListComponent {
 
   user!: Usuario;
   nombreFiltro: string = ''
-  titulo:string = `Mis recetas`;
- 
+  titulo:string = '';
+
   
 
   listaRecetas: Recipe[] = [];
@@ -47,6 +47,9 @@ export class ListComponent {
 
   ngOnInit() {
 
+
+    
+    this.titulo = this.t('MY_RECIPES')
     
     this.listarRecetas()
     this.listarCategorias()
@@ -100,7 +103,7 @@ export class ListComponent {
         console.log('recetas de categoria', lista)
         this.listaRecetas = response.data.relationships.recipes;
         this.nombreFiltro = response.data.attributes.name
-        this.titulo = `Lista de recetas filtrado por: ${this.nombreFiltro}`
+        this.titulo = `${this.t('FILTERED_RECIPES_LIST')} ${this.nombreFiltro}`;
         this.reiniciarPaginate()
         this.paginateRecetas();  // Llamar a la función de paginación después de obtener las recetas
 
@@ -116,7 +119,7 @@ export class ListComponent {
     this.listaRecetas = this.recetasUsuario;
     this.recipeService.setRecetasUsuario(this.recetasUsuario);
     console.log('Esta es la lista del usuario',this.recetasUsuario);
-    this.titulo = 'Mis recetas'
+    this.titulo = this.t('MY_RECIPES')
     this.reiniciarPaginate()
     this.paginateRecetas();  // Llamar a la función de paginación después de obtener las recetas
     
@@ -131,7 +134,7 @@ export class ListComponent {
   
   listarTodas() {
     this.listaRecetas = this.listaBoton;
-    this.titulo = 'Todas las recetas'
+    this.titulo = this.t('ALL_RECIPES')
     this.paginateRecetas();  // Llamar a la función de paginación después de obtener las recetas
   }
 

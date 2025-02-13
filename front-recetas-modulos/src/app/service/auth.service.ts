@@ -23,7 +23,7 @@ export class AuthService {
 
   // Login
   login(email: string, password: string, device_name: string): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${this.apiUrl}/api/login`, { email, password, device_name })
+    return this.http.post<LoginResponse>(`${this.apiUrl}/login`, { email, password, device_name })
       .pipe(
         tap(response => {
           // Guardar el token en el servicio TokenService

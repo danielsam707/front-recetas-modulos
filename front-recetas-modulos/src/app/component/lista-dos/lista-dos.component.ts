@@ -31,6 +31,9 @@ export class ListaDosComponent {
   ) {}
 
   ngOnInit() {
+
+    this.titulo = this.t('FILTERED_RECIPES_LIST')
+
     this.obtenerCategorias();
     this.obtenerAreas();
     this.recetasPorCategorias('Vegetarian');  // Cargar recetas al inicio
@@ -51,7 +54,7 @@ export class ListaDosComponent {
   // Obtener recetas por categoría
   recetasPorCategorias(name: string) {
     this.nombreFiltro = name;
-    this.titulo = `Lista de recetas filtradas por: ${this.nombreFiltro}`;
+    this.titulo = `${this.t('FILTERED_RECIPES_LIST')} ${this.nombreFiltro}`;
     this.recipeService.recipeByCategory(name).subscribe(response => {
       this.listaRecetas = response;
       this.reiniciarPaginate();
@@ -62,7 +65,7 @@ export class ListaDosComponent {
   // Obtener recetas por área
   recetasPorArea(area: string) {
     this.nombreFiltro = area;
-    this.titulo = `Lista de recetas filtradas por área: ${this.nombreFiltro}`;
+    this.titulo = `${this.t('FILTERED_RECIPES_LIST_AREA')}  ${this.nombreFiltro}`;
     this.recipeService.recipeByArea(area).subscribe(response => {
       this.listaRecetas = response;
       this.reiniciarPaginate();

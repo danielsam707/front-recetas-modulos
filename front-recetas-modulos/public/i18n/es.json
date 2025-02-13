@@ -3,7 +3,8 @@
   "ACTIONS": "Acciones",
   "MY_RECIPES": "Mis recetas",
   "ALL_RECIPES": "Todas las recetas",
-  "FILTERED_RECIPES_LIST": "Lista de recetas filtrada por:",
+  "FILTERED_RECIPES_LIST": "Lista de recetas filtrada por: ",
+  "FILTERED_RECIPES_LIST_AREA": "Lista de recetas filtrada por área: ",
   "PAGE": "Página",
   "OF": "de",
   
