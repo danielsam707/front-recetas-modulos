@@ -15,7 +15,7 @@ export class HeaderComponent {
   constructor(
     public router: Router,
     private authService: AuthService,
-        private translationService: TranslationService,
+    private translationService: TranslationService,
     
   ) {
 
@@ -43,6 +43,10 @@ export class HeaderComponent {
 
   t(key: string) {
     return this.translationService.translate(key);
+  }
+
+  changeLanguage(lang: 'es' | 'en') {
+    this.translationService.setLanguage(lang);
   }
 
 

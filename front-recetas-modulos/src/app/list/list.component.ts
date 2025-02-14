@@ -173,8 +173,4 @@ export class ListComponent {
     return this.translationService.translate(key);
   }
 
-  changeLanguage(lang: 'es' | 'en') {
-    this.translationService.setLanguage(lang);
-  }
-
 }

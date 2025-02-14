@@ -25,7 +25,20 @@
                 <button *ngIf="user" (click)="logoutUser()"
                     class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors duration-300">
                     {{ t('BTN_LOGOUT')}}
+
+                <!-- Botones de selectores de idioma -->
                 </button>
+                <div class="language-selector flex space-x-2">
+                    <button class="w-8 h-8 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white rounded-full flex items-center justify-center hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300"
+                        (click)="changeLanguage('es')" title="Español">
+                        🇪🇸
+                    </button>
+                    <button class="w-8 h-8 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white rounded-full flex items-center justify-center hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300"
+                        (click)="changeLanguage('en')" title="English">
+                        🇺🇸
+                    </button>
+                </div>
+                
             </div>
         </div>
     </nav>
@@ -41,7 +54,7 @@
                     </li>
                     <li>
                         <a routerLink="/lista-api"
-                           class="text-gray-900 dark:text-white hover:underline cursor-pointer">{{ t('LINK_OTHER_RECIPES')}}</a>
+                        class="text-gray-900 dark:text-white hover:underline cursor-pointer">{{ t('LINK_OTHER_RECIPES')}}</a>
                     </li>
                 </ul>
             </div>
